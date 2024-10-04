@@ -2,9 +2,12 @@ on:
   pull_request_target:
 
 jobs:
-  test-torchfix:
+  comment:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Comment
         run: |
           echo "Hi"
