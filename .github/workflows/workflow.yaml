@@ -7,13 +7,13 @@ jobs:
     steps:
       - name: 1 List files in the repository
         run: |
-          ls ${{ github.workspace }}
+          ls -a ${{ github.workspace }}
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: 2 List files in the repository
         run: |
-          ls ${{ github.workspace }}
+          ls -a ${{ github.workspace }}
       - name: Comment
         run: |
           echo "Hi"
