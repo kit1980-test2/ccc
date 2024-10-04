@@ -1,0 +1,10 @@
+on:
+  pull_request_target:
+
+jobs:
+  test-torchfix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment
+        run: |
+          echo "Hi"
