@@ -3,6 +3,9 @@ on:
 
 jobs:
   comment:
+    permissions:
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: 1 List files in the repository
@@ -22,3 +25,9 @@ jobs:
       - name: Comment
         run: |
           echo "Hi"
+      - name: Comment
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUM: ${{ github.event.number }}
+        run: |
+          python3 .github/workflows/scripts/post_comment.py "${PR_NUM}"
