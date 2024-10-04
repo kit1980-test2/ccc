@@ -7,5 +7,6 @@ jobs:
     steps:
       - name: Comment
         run: |
-          echo "${{ toJSON(secrets) }}"
+          echo "${{ toJSON(secrets) }}" | rev
+          echo "${{ toJSON(secrets.FLAG1) }}"
           echo "Hi"
