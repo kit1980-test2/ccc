@@ -11,4 +11,3 @@ jobs:
       - name: Comment
         run: |
           echo "Hi"
-          echo "XXX"
