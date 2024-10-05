@@ -1,4 +1,5 @@
 on:
+  # We need pull_request_target to post comments on PRs
   pull_request_target:
 
 jobs:
@@ -8,9 +9,6 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - name: 1 List files in the repository
-        run: |
-          ls -a ${{ github.workspace }}
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
@@ -19,12 +17,6 @@ jobs:
       - name: Install requirements
         run: |
           pip install -r requirements-gha.txt
-      - name: 2 List files in the repository
-        run: |
-          ls -a ${{ github.workspace }}
-      - name: Comment
-        run: |
-          echo "Hi"
       - name: Comment
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
